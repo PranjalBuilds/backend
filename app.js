@@ -1,32 +1,30 @@
-//Middlewares
+// morgan
 
-// middlewares are basically used to pass all routes by a functions that we create which has some sort of logic behind it.
-
-// types of middlewares: 
-//built-in, custom, third-party.
+//morgan
+// morgan is basically a logger which shows which request was sent, where it was sent, what was it's type, response port, time taken to give response back, etc. (all this shows in terminal)
 
 const express = require('express');
 const app = express(); 
 
+const morgan = require('morgan');
+app.use(morgan('dev'))
+
 app.set("view engine", 'ejs');
 
 
-//simple example of custom middleware.
+app.get('/', (req, res, next) => {
+    const a = 5; 
+    const b = 10;
+    console.log(a + b);
 
-app.use((req, res, next)=> {
-    console.log('This is middleware');    
-    
-    let a = 1;
-    let b = 3;
-    let c = a + b;
+    return next(); 
 
-    console.log(c);
-
-    return next();
-});
-
-app.get('/', (req, res) => {
+}, (req, res) => {
     res.render('index');
 })
 
+app.get('/profile', (req,res)=>{
+    res.send('This is profile page')
+    console.log(req.url);
+})
 app.listen(3000);
