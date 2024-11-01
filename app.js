@@ -1,22 +1,23 @@
-// creating the simple http server
+//Working with Express JS
 
-const http = require('http')
+// [ install express.js before execution! ]
 
+const express = require('express');
+const app = express(); 
 
-//this creates an instance of http server
-
-const server = http.createServer((req,res)=>{
-   if(req.url == "/about") {
-        res.end("Welcome to About Page!");
-   } 
-
-   if(req.url == "/profile"){
-        res.end('Welcome to the Profile Page!');
-   }
-
-   if(req.url == "/") {
-        res.end("Hello World!")
-   }
+// create the default route
+app.get('/', (req, res) => {
+    res.send('Hello world!');
 })
 
-server.listen(3000)
+app.get('/about', (req, res) => {
+    res.send('This is the about page');
+})
+
+app.get('/profile', (req, res)=> {
+    res.send('This is the Profile Page!');
+})
+
+app.listen(3000);
+
+// note : we don't have to create server in Express js
