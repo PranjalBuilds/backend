@@ -1,23 +1,14 @@
-//Working with Express JS
-
-// [ install express.js before execution! ]
+//Working with Express.JS x EJS
 
 const express = require('express');
 const app = express(); 
 
-// create the default route
+//telling to Express Js that which view engine we are working with. 
+
+app.set("view engine", 'ejs');
+
 app.get('/', (req, res) => {
-    res.send('Hello world!');
-})
-
-app.get('/about', (req, res) => {
-    res.send('This is the about page');
-})
-
-app.get('/profile', (req, res)=> {
-    res.send('This is the Profile Page!');
+    res.render('index');
 })
 
 app.listen(3000);
-
-// note : we don't have to create server in Express js
