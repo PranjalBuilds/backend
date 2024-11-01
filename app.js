@@ -1,4 +1,13 @@
-// here we are installing npm package 'cat-me' for understanding purpose, when we run the code it gives a cat drawn by some characters or symbols in terminal 
+// creating the simple http server
 
-const catMe = require('cat-me');
-console.log(catMe());
+const http = require('http')
+
+
+//this creates an instance of http server
+
+const server = http.createServer((req,res)=>{
+    console.log(req.url);
+    res.end('Hello World!') 
+})
+
+server.listen(3000)
