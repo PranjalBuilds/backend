@@ -28,4 +28,21 @@ app.post('/get-form-data', (req, res)=> {
     res.send('data received!')
 })
 
+app.get('/register', (req, res)=> {
+    res.render('register');
+})
+
+app.post('/register', async (req,res)=> {
+
+   //destructuring data coming from register page (storing in this variables)
+    const {username, email, password } = req.body;
+
+    const newUser = await userModel.create({
+        username: username,
+        email: email,
+        password: password
+    })
+
+    res.send(newUser) //display user details
+})
 app.listen(3000);
