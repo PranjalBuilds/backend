@@ -1,18 +1,16 @@
-// handling forms 
-
-//morgan
-// morgan is basically a logger which shows which request was sent, where it was sent, what was it's type, response port, time taken to give response back, etc. (all this shows in terminal)
-
 const express = require('express');
+const morgan = require('morgan');
+const userModel = require('./models/user');
+const dbcon = require('./config/db');
+
 const app = express(); 
 
-const morgan = require('morgan');
 app.use(morgan('dev'))
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(express.static("public"))
+app.use(express.static("public"))                                           
 
 app.set("view engine", 'ejs');
 
