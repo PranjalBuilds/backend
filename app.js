@@ -43,6 +43,15 @@ app.post('/register', async (req,res)=> {
         password: password
     })
 
-    res.send(newUser) //display user details
 })
+
+// CRUD (CREATE, READ, UPDATE, DELETE)
+
+// reading all users from mongoDB
+app.get('/get-users', (req,res)=> {
+    userModel.find().then((users)=> {
+        res.send(users);
+    })
+})
+
 app.listen(3000);
