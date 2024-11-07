@@ -28,6 +28,14 @@ app.post('/get-form-data', (req, res)=> {
     res.send('data received!')
 })
 
+app.get('/get-users', (req,res) => {
+    userModel.find({
+        username: 'b'
+    }).then((users)=>{
+        res.send(users);
+    })
+})
+
 app.get('/register', (req, res)=> {
     res.render('register');
 })
