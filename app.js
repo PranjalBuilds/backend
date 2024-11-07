@@ -28,13 +28,7 @@ app.post('/get-form-data', (req, res)=> {
     res.send('data received!')
 })
 
-app.get('/get-users', (req,res) => {
-    userModel.find({
-        username: 'b'
-    }).then((users)=>{
-        res.send(users);
-    })
-})
+
 
 app.get('/register', (req, res)=> {
     res.render('register');
@@ -55,9 +49,24 @@ app.post('/register', async (req,res)=> {
 
 // CRUD (CREATE, READ, UPDATE, DELETE)
 
-// reading all users from mongoDB
-app.get('/get-users', (req,res)=> {
-    userModel.find().then((users)=> {
+// find(), findOne() in READ operations
+
+// find() - helps to read the data from db based on given conditions
+
+// app.get('/get-users', (req,res) => {
+//     userModel.find({
+//         username: 'b'
+//     }).then((users)=>{
+//         res.send(users);
+//     })
+// })
+
+//findOne() - it returns only one user which created earlier 
+
+app.get('/get-users', (req,res) => {
+    userModel.findOne({
+        username: 'b'
+    }).then((users)=>{
         res.send(users);
     })
 })
