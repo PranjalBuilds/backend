@@ -34,6 +34,10 @@ app.get('/register', (req, res)=> {
     res.render('register');
 })
 
+// CRUD (CREATE, READ, UPDATE, DELETE)
+
+// CREATE
+
 app.post('/register', async (req,res)=> {
 
    //destructuring data coming from register page (storing in this variables)
@@ -47,7 +51,7 @@ app.post('/register', async (req,res)=> {
 
 })
 
-// CRUD (CREATE, READ, UPDATE, DELETE)
+// READ 
 
 // find(), findOne() in READ operations
 
@@ -69,6 +73,20 @@ app.get('/get-users', (req,res) => {
     }).then((users)=>{
         res.send(users);
     })
+}) 
+
+// UPDATE 
+
+app.get('/update-user', async (req,res) => {
+    await userModel.findOneAndUpdate({
+        username: 'b',
+        _id: '672a1a44a524e2c361794633',
+    }, {
+        email: "c@gmail.com",
+        username: 'c',
+        password: 'c'
+    }),
+    res.send('User Updated!')
 })
 
 app.listen(3000);
